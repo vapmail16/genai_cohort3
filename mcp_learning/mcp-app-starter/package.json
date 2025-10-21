@@ -1,0 +1,29 @@
+{
+  "name": "mcp-app-starter",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "servers/*",
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "install:all": "npm install && npm run install:servers && npm run install:backend && npm run install:frontend",
+    "install:servers": "cd servers/billing && npm install",
+    "install:backend": "cd backend && npm install",
+    "install:frontend": "cd frontend && npm install",
+    "build:all": "npm run build:servers && npm run build:backend",
+    "build:servers": "cd servers/billing && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm run preview"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@types/cors": "^2.8.19"
+  }
+}
