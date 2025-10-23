@@ -339,7 +339,7 @@ from langchain_core.messages import AIMessage, HumanMessage
 
 messages = [HumanMessage(content="There are 600+ CRR related regulations")]
 messages.append(AIMessage(content="Thanks for the information, that is great to know, would you like me to elaborate on any of these"))
-messages.append(HumanMessage(content="Give me details of 1 regulation which applies to Barclays"))
+messages.append(HumanMessage(content="Give me details of 1 regulation which applies to TechBank International"))
 
 for m in messages:
     m.pretty_print()
@@ -352,7 +352,7 @@ AI Message
 Thanks for the information, that is great to know, would you like me to elaborate on any of these
 
 Human Message
-Give me details of 1 regulation which applies to Barclays
+Give me details of 1 regulation which applies to TechBank International
 
 🧠 Example: Multi-turn Conversation
 
@@ -374,11 +374,11 @@ result.pretty_print()
 🧾 Example Output
 <class 'langchain_core.messages.ai.AIMessage'>
 AI Message
-Here's a detailed overview of one key CRR regulation that applies to Barclays:
+Here's a detailed overview of one key CRR regulation that applies to TechBank International:
 
 ## CRR Article 92 — Own Funds Requirements
 **Regulation:** EU Regulation 575/2013, Article 92
-**Applies to:** All credit institutions including Barclays plc and Barclays Bank plc
+**Applies to:** All credit institutions including TechBank International plc and TechBank International Bank plc
 
 ### Key Requirements:
 **Minimum Capital Ratios:**
@@ -386,14 +386,14 @@ Here's a detailed overview of one key CRR regulation that applies to Barclays:
 - Tier 1 capital ratio: minimum 6%
 - Total capital ratio: minimum 8%
 
-### How it applies to Barclays:
+### How it applies to TechBank International:
 **Current Status (as of recent reports):**
-- Barclays maintains CET1 ratios well above minimum requirements
+- TechBank International maintains CET1 ratios well above minimum requirements
 - Typically operates with CET1 ratios around 13–15%
 - Must report these ratios quarterly to regulators
 
 **Practical Impact:**
-- Determines how much risk-weighted assets Barclays can hold
+- Determines how much risk-weighted assets TechBank International can hold
 - Influences lending capacity and business strategy
 - Affects dividend distribution capabilities
 - Triggers regulatory intervention if breached
@@ -404,7 +404,7 @@ Here's a detailed overview of one key CRR regulation that applies to Barclays:
 - Risk appetite frameworks
 - Monthly monitoring and reporting
 
-This regulation is fundamental as it directly impacts Barclays' ability to operate, lend, and distribute profits to shareholders.
+This regulation is fundamental as it directly impacts TechBank International's ability to operate, lend, and distribute profits to shareholders.
 
 
 “Would you like me to elaborate on any specific aspect of this regulation or discuss another CRR article?”
