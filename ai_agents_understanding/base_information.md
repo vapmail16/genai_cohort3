@@ -264,7 +264,7 @@ display(Image(graph.get_graph().draw_mermaid_png()))
 
 When you invoke the graph:
 
-Initial state is passed in: {"graph_state": "Roshan will"}
+Initial state is passed in: {"graph_state": "Vikkas will"}
 
 Node 1 appends " will"
 
@@ -274,7 +274,7 @@ The chosen node appends its text
 
 Final state is returned
 
-graph.invoke({"graph_state": "Roshan will"})
+graph.invoke({"graph_state": "Vikkas will"})
 
 ✅ Query Outputs for Emissions Example
 Query 1: Fleet vehicle emissions
