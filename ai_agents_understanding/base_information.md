@@ -42,7 +42,7 @@ Each concept is introduced with a simple example first, then followed by a real-
 
 Basic Python knowledge
 
-AWS account with Bedrock access (Claude model)
+OpenAI API key
 
 Familiarity with LLMs and basic AI concepts
 
@@ -72,7 +72,7 @@ langgraph-checkpoint
 langgraph-prebuilt
 jupyter
 ipykernel
-langchain-aws
+langchain-openai
 pandas
 pydantic
 pydantic_core
@@ -83,17 +83,14 @@ Then install the packages:
 
 pip install -r requirements.txt
 
-Step 3: Configure AWS Credentials
+Step 3: Configure OpenAI API Key
 
-Create a .env file in the same directory with your AWS credentials:
+Create a .env file in the same directory with your OpenAI API key:
 
-BEDROCK_MODEL_ID=us.anthropic.claude-sonnet-4-20250514-v1:0
-AWS_REGION=us-east-1
-AWS_ACCESS_KEY_ID=your_access_key_here
-AWS_SECRET_ACCESS_KEY=your_secret_key_here
+OPENAI_API_KEY=your_openai_api_key_here
 
 
-Note: Make sure your AWS account has access to Amazon Bedrock and the Claude Sonnet 4 model.
+Note: Make sure you have a valid OpenAI API key with sufficient credits.
 
 Step 4: Launch Jupyter Notebook
 
@@ -108,31 +105,32 @@ This will open a browser window. Navigate to this notebook and you're ready to g
 
 Python 3.12 not found? Install it from the official Python site.
 
-AWS Bedrock access issues? Ensure you’ve requested model access in the AWS Bedrock console.
+OpenAI API key issues? Ensure you have a valid API key and sufficient credits.
 
 Import errors? Make sure your virtual environment is activated before running Jupyter.
 
 🌱 Basic Set-up — Part 1: Environment Setup
 
 Before we build our agents, we need to set up our environment and connect to the LLM.
-We’ll be using AWS Bedrock with Claude Sonnet 4 as our language model.
+We'll be using OpenAI's GPT-4 as our language model.
 
-What’s happening here:
+What's happening here:
 
-Loading environment variables (API keys, region settings)
+Loading environment variables (API key)
 
-Initializing the Claude model via AWS Bedrock
+Initializing the GPT-4 model via OpenAI API
 
 Testing the connection with a simple message
 
 This setup will be used throughout the tutorial.
 
-BEDROCK_MODEL_ID = os.getenv("BEDROCK_MODEL_ID", "us.anthropic.claude-sonnet-4-20250514-v1:0")
-AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
+from langchain_openai import ChatOpenAI
 
-model = ChatBedrockConverse(
-    model_id=BEDROCK_MODEL_ID,
-    region_name=AWS_REGION,
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+model = ChatOpenAI(
+    api_key=OPENAI_API_KEY,
+    model="gpt-4o",
     max_tokens=512,
     temperature=0.1,
 )
@@ -360,9 +358,9 @@ Below we'll create a conversation with multiple turns. Notice how each message i
 
 When you send this list to an LLM, it can understand the full conversation history and provide contextually appropriate responses.
 
-model2 = ChatBedrockConverse(
-    model_id=BEDROCK_MODEL_ID,
-    region_name=AWS_REGION,
+model2 = ChatOpenAI(
+    api_key=OPENAI_API_KEY,
+    model="gpt-4o",
     max_tokens=512,
     temperature=0.1,
 )
@@ -916,9 +914,9 @@ def division(a: int, b: int) -> int:
     """Divide two numbers"""
     return a / b
 
-model3 = ChatBedrockConverse(
-    model_id=BEDROCK_MODEL_ID,
-    region_name=AWS_REGION,
+model3 = ChatOpenAI(
+    api_key=OPENAI_API_KEY,
+    model="gpt-4o",
     max_tokens=512,
     temperature=0.1,
 )
@@ -1017,9 +1015,9 @@ Scenario:
 The bank’s ESG (Environmental, Social, Governance) team needs to track operational emissions across all their facilities and operations to achieve net-zero goals.
 
 # Create a specialized model for emissions assessment
-emissions_model = ChatBedrockConverse(
-    model_id=BEDROCK_MODEL_ID,
-    region_name=AWS_REGION,
+emissions_model = ChatOpenAI(
+    api_key=OPENAI_API_KEY,
+    model="gpt-4o",
     max_tokens=1024,
     temperature=0.1,
 )

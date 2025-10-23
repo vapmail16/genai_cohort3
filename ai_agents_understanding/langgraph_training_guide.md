@@ -34,7 +34,7 @@
 
 ### Prerequisites ✅
 - Basic Python knowledge
-- AWS account with Bedrock access
+- OpenAI API key
 - Understanding of AI/LLM concepts
 
 ### Environment Setup 🛠️
@@ -60,7 +60,7 @@ langgraph-checkpoint
 langgraph-prebuilt
 jupyter
 ipykernel
-langchain-aws
+langchain-openai
 pandas
 pydantic
 pydantic_core
@@ -72,29 +72,25 @@ Install packages:
 pip install -r requirements.txt
 ```
 
-#### Step 3: AWS Configuration
+#### Step 3: OpenAI Configuration
 Create `.env` file:
 ```env
-BEDROCK_MODEL_ID=us.anthropic.claude-sonnet-4-20250514-v1:0
-AWS_REGION=us-east-1
-AWS_ACCESS_KEY_ID=your_access_key_here
-AWS_SECRET_ACCESS_KEY=your_secret_key_here
+OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 #### Step 4: Test Setup
 ```python
 import os
-from langchain_aws import ChatBedrockConverse
+from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
 
 # Load environment variables
-BEDROCK_MODEL_ID = os.getenv("BEDROCK_MODEL_ID", "us.anthropic.claude-sonnet-4-20250514-v1:0")
-AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Initialize model
-model = ChatBedrockConverse(
-    model_id=BEDROCK_MODEL_ID,
-    region_name=AWS_REGION,
+model = ChatOpenAI(
+    api_key=OPENAI_API_KEY,
+    model="gpt-4o",
     max_tokens=512,
     temperature=0.1,
 )
@@ -327,9 +323,9 @@ messages.append(HumanMessage(content="Give me details of 1 regulation which appl
 #### Step 2: Process with LLM
 ```python
 # Create a new model instance
-model2 = ChatBedrockConverse(
-    model_id=BEDROCK_MODEL_ID,
-    region_name=AWS_REGION,
+model2 = ChatOpenAI(
+    api_key=OPENAI_API_KEY,
+    model="gpt-4o",
     max_tokens=512,
     temperature=0.1,
 )
@@ -647,6 +643,12 @@ def division(a: int, b: int) -> int:
     return a / b
 
 # Create model with all tools
+model3 = ChatOpenAI(
+    api_key=OPENAI_API_KEY,
+    model="gpt-4o",
+    max_tokens=512,
+    temperature=0.1,
+)
 tools = [addition, subtraction, multiplication, division]
 model3_with_tools = model3.bind_tools(tools)
 ```
@@ -941,9 +943,9 @@ $100,000 spent on services: 20000.0 kg CO2
 #### Create Specialized Model
 ```python
 # Create a specialized model for emissions assessment
-emissions_model = ChatBedrockConverse(
-    model_id=BEDROCK_MODEL_ID,
-    region_name=AWS_REGION,
+emissions_model = ChatOpenAI(
+    api_key=OPENAI_API_KEY,
+    model="gpt-4o",
     max_tokens=1024,
     temperature=0.1,
 )
